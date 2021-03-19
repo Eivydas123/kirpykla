@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
-use App\Notifications\VisitSuccess;
+
 
 class userObserver
 {
@@ -16,7 +16,7 @@ class userObserver
     public function creating(User $user)
     {
         $user->assignRole('staff');
-        //$user->notify(new VisitSuccess);
+       
     }
   
 }
