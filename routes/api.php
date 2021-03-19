@@ -11,7 +11,7 @@ use App\Http\Controllers\VisitorController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return [
         'user' => auth()->user(),
-       
+        'roles' => auth()->user()->getRoleNames(),
     ];
 });
 
@@ -24,7 +24,7 @@ Route::get("/token/{token:token}", [TokenController::class, 'show']);
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::group(['middleware' => ['role:admin']], function () {
-
+        
         Route::post("/token", [TokenController::class, 'store']);
         Route::post("/showChart", [VisitorController::class, 'show']);
         Route::post("/users", [UserController::class, 'index']);
