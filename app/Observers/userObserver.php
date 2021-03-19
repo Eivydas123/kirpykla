@@ -15,7 +15,6 @@ class userObserver
      */
     public function creating(User $user)
     {
-        $user->assignRole('staff');
        
     }
   
