@@ -44,11 +44,14 @@ class CreateNewUser implements CreatesNewUsers
             return response()->json(['message'=> 'token expired'], 401);
         }
 
-        return User::create([
+        
+        $user =  User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+        $user->assignRole('staff');
+        return $user;
  
     }
 }
